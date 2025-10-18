@@ -1,2 +1,2 @@
 # condominium-management-system
-NODE.JS | REACT
+NODE.JS | REACT.JS

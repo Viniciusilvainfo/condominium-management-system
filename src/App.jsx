@@ -37,9 +37,13 @@ function App() {
   function onInsertClick() {
     const descricao = document.getElementById("descricao").value;
     const titulo = document.getElementById("titulo").value;
-    const dados = { titulo, descricao, id: pedidos.length + 1, pendente: true };
-    pedidos.push(dados);
-    setPedidos([...pedidos]);
+    const pedido = {
+      titulo,
+      descricao,
+      id: pedidos.length + 1,
+      pendente: true,
+    };
+    setPedidos([...pedidos, pedido]);
   }
 
   return (

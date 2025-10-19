@@ -13,7 +13,9 @@ function AddPedidos({ onInsertClick }) {
         name="descricao"
         placeholder="Digite a descrição"
       />
-      <button onClick={onInsertClick}>Adicionar</button>
+      <button className="bg-slate-400 rounded-md p-1" onClick={onInsertClick}>
+        Adicionar
+      </button>
     </div>
   );
 }

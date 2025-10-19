@@ -2,7 +2,19 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.jsx";
-import Pedidos from "./components/Pedidos.jsx";
-import AddPedidos from "./components/AddPedidos.jsx";
+import PedidoPage from "./pages/PedidoPage.jsx";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-createRoot(document.getElementById("root")).render(<App />);
+const router = createBrowserRouter([
+  { path: "/", element: <App /> },
+  {
+    path: "/pedido",
+    element: <PedidoPage />,
+  },
+]);
+
+createRoot(document.getElementById("root")).render(
+  <RouterProvider router={router} />
+);
+
+// createRoot(document.getElementById("root")).render(<App />);

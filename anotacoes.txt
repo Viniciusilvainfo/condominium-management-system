@@ -4,3 +4,5 @@ Ordem no terminal:
     npm run dev
     npm install tailwindcss @tailwindcss/vite (add aqui vite.config.js)
     npm install lucide-react
+    npm install react-router-dom
+    npm install axios

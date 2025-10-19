@@ -1,23 +1,30 @@
 import Pedidos from "./components/Pedidos.jsx";
 import AddPedidos from "./components/AddPedidos.jsx";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { v4 } from "uuid";
 
 function App() {
-  const [pedidos, setPedidos] = useState([
-    {
-      id: 1,
-      titulo: "Pedido 1",
-      descricao: "Pedido para o apartamento 101",
-      pendente: false,
-    },
-    {
-      id: 2,
-      titulo: "Pedido 2",
-      descricao: "Pedido para o apartamento 202",
-      pendente: true,
-    },
-  ]);
+  const [pedidos, setPedidos] = useState(
+    JSON.parse(localStorage.getItem("pedidos")) || []
+  );
+
+  useEffect(() => {
+    // async function fetchData() {
+    //   const response = await fetch(
+    //     "https://jsonplaceholder.typicode.com/todos?_limit=5",
+    //     {
+    //       method: "GET",
+    //     }
+    //   );
+    //   const dados = await response.json();
+    //   setPedidos(dados);
+    // }
+    // fetchData();
+  }, []); //lista vazio só executa da primeira vez que o usuário entra na página
+
+  useEffect(() => {
+    localStorage.setItem("pedidos", JSON.stringify(pedidos));
+  }, [pedidos]);
 
   function onPedidoClick(pedidoId) {
     const novoPedidos = pedidos.map((pedido) => {

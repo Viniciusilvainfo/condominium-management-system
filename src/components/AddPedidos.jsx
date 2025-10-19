@@ -1,10 +1,16 @@
+import { useState } from "react";
+
 function AddPedidos({ onInsertClick }) {
+  const { titulo, setTitulo } = useState("");
+
   return (
     <div className="space-y-4 p-6 bg-slate-200 rounded-md shadow flex flex-col">
       <input
         type="text"
         id="titulo"
         name="titulo"
+        value={titulo}
+        onChange={(event) => setTitulo(event.target.value)}
         placeholder="Digte o título do pedido"
       />
       <input

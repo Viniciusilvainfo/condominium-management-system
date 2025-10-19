@@ -1,6 +1,7 @@
 import Pedidos from "./components/Pedidos.jsx";
 import AddPedidos from "./components/AddPedidos.jsx";
 import { useState } from "react";
+import { v4 } from "uuid";
 
 function App() {
   const [pedidos, setPedidos] = useState([
@@ -40,7 +41,7 @@ function App() {
     const pedido = {
       titulo,
       descricao,
-      id: pedidos.length + 1,
+      id: v4(),
       pendente: true,
     };
     setPedidos([...pedidos, pedido]);

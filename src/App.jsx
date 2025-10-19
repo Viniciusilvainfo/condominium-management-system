@@ -28,14 +28,32 @@ function App() {
     setPedidos(novoPedidos);
   }
 
+  function onRemoverClick(pedidoId) {
+    if (!confirm("Tem certeza que deseja remover este pedido?")) return false;
+    const novoPedidos = pedidos.filter((pedido) => pedido.id != pedidoId);
+    setPedidos(novoPedidos);
+  }
+
+  function onInsertClick() {
+    const descricao = document.getElementById("descricao").value;
+    const titulo = document.getElementById("titulo").value;
+    const dados = { titulo, descricao, id: pedidos.length + 1, pendente: true };
+    pedidos.push(dados);
+    setPedidos([...pedidos]);
+  }
+
   return (
     <div className="w-screen h-screen bg-slate-500 flex justify-center p-6">
       <div className="w-[500px]">
         <h1 className="text-slate-100 text-3xl font-bold text-center">
           Gerenciador de Pedidos
         </h1>
-        <AddPedidos setPedidos={setPedidos} />
-        <Pedidos pedidos={pedidos} onPedidoClick={onPedidoClick} />
+        <AddPedidos setPedidos={setPedidos} onInsertClick={onInsertClick} />
+        <Pedidos
+          pedidos={pedidos}
+          onPedidoClick={onPedidoClick}
+          onRemoverClick={onRemoverClick}
+        />
       </div>
     </div>
   );
